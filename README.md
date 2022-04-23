@@ -12,6 +12,9 @@ No back-end a o (micro-)framework escolhido foi [Flask](https://flask.palletspro
 
 Como banco de dados foi escolhido o PostgreSQL, devido a conhecimento e uso prévio deste banco de dados.
 
+## Ressalvas sobre a solução
+O desenvolvimento aqui foi feito em cima do o ambiente de desenvolvimento do framework Flask, devido principalmente ao fato de que este é um exercício de conhecimento. Para o caso de executar a aplicação em um ambiente de produção algumas alterações deveriam ser feitas, como por exemplo configurar corretamente o [WSGI](https://pt.wikipedia.org/wiki/Web_Server_Gateway_Interface) entre outros detalhes.
+
 ## Execução
 A execução dos projetos front-end e back-end acontece de maneira desacoplada, ou seja, ambos projetos não possuem relação direta um com o outro.
 
