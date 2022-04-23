@@ -5,6 +5,8 @@ O problema proposto é um sistema simples de gerenciamento de CPF/CNPJ (CRUD), i
 
 Levando em conta a arquitetura de API REST para o back-end o projeto foi desenvolvimento de maneira a desacoplar o máximo possível as soluções front-end e back-end, de modo que a API desenvolvida seja de uso geral e o front-end possa substituir a API sem grandes complicações.
 
+Idealmente, esses projetos deveriam estar em repositórios separados, mas foram mantidos no mesmo repositório por simplicidade de execução e avaliação.
+
 ## Stack escolhida
 Para o front-end, o framework escolhido foi `Vue3`, devido a familiaridade com a ferramenta e oportunidade de aprender sobre uma versão mais nova (atualmente trabalho com a versão 2), utilizando do plugin `Vue-Router` para dar suporte a SPA.
 
