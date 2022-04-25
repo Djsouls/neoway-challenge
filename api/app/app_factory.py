@@ -1,8 +1,20 @@
 from flask import Flask
-from flask_cors import CORS
+
+from extensions import cors
+
+from api import resources, cpf
 
 def create_app() -> Flask:
     app = Flask('neoway-api')
-    CORS(app)
+
+    register_extensions(app)
+    register_blueprints(app)
 
     return app
+
+def register_extensions(app: Flask):
+    cors.init_app(app)
+
+def register_blueprints(app: Flask):
+    app.register_blueprint(resources.bp)
+    app.register_blueprint(cpf.bp)
