@@ -1,0 +1,3 @@
+[default]
+SQLALCHEMY_DATABASE_URI='postgresql://neoway:neoway@db:5432/neoway'
+SQLALCHEMY_TRACK_MODIFICATIONS='False'
