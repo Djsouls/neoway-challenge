@@ -1,6 +1,8 @@
 from flask import Flask
 
-from extensions import cors
+from extensions import cors, db
+
+from dynaconf import FlaskDynaconf
 
 from api import resources, cpf
 
@@ -13,7 +15,9 @@ def create_app() -> Flask:
     return app
 
 def register_extensions(app: Flask):
+    FlaskDynaconf(app)
     cors.init_app(app)
+    db.init_app(app)
 
 def register_blueprints(app: Flask):
     app.register_blueprint(resources.bp)
