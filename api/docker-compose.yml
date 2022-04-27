@@ -5,3 +5,15 @@ services:
     build: .
     ports:
       - 5000:5000
+    depends_on:
+      - db
+    volumes:
+      - ./app:/app/app/
+  db:
+    image: postgres
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: "neoway"
+      POSTGRES_USER: "neoway"
+      POSTGRES_DB: "neoway"
