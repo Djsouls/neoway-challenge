@@ -6,6 +6,8 @@ COPY . .
 
 RUN pip install -r requirements.txt
 
-ENTRYPOINT ["python"]
+ENV FLASK_ENV development
 
-CMD ["app/main.py"]
+# ENTRYPOINT ["python"]
+
+CMD ["python", "app/main.py"]
