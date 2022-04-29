@@ -19,6 +19,13 @@ O desenvolvimento aqui foi feito em cima do o ambiente de desenvolvimento do fra
 
 ## Melhorias futuras
 
+### Sobre as validações
+Houve dúvida sobre se a validação deveria ser realizada na parte do frontend, ou backend, não ficou muito claro no enunciado. Assim, implementei em ambas as partes.
+
+A partir da página : `http://localhost:8080/validate` no seu browser, será mostrada uma `View` de validação feita pelo backend, essa página faz uma requisição de validação ao backend e age de acordo com o resultado.
+
+Já na página `http://localhost:8080/`, existe uma validação feita no frontend ao tentar inserir um CPF/CNPJ novo, não permitindo a ação caso o CPF/CNPJ seja inválido
+
 ### Sobre a rota `/status`
 Para se possuir métricas de maneira robusta, o ideal seria utilizar uma ferramenta de monitoramento, como DataDog ou similiares, entretanto, não foi possível realizar a integração deste tipo de ferramenta a tempo, devido principalmente a falta de experiência prévia.
 
