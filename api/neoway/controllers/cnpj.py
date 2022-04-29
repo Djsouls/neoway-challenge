@@ -24,8 +24,6 @@ class CNPJController:
         }
 
     def create(self, request):
-        ## TODO: Validate request params
-        # just for now
         cnpj = clean_cnpj(request.json.get('cnpj'))
 
         if not validate_cnpj(cnpj):
@@ -36,7 +34,10 @@ class CNPJController:
     def delete(self, id: int):
         response = self.repository.delete(id)
 
-        return jsonify(response) if response == [] else jsonify(response), 400
+        if response == []:
+            jsonify(response), 400
+
+        return jsonify(response)
 
     def block(self, id: int):
         cnpj = self.repository.get(id)
@@ -58,8 +59,6 @@ class CNPJController:
         return jsonify(self.repository.get(id) or [])
 
     def validate(self, request):
-        ## TODO: Validate request params
-
         cnpj = clean_cnpj(request.args.get('cnpj'))
 
         blocked = self.repository.blocked(cnpj)

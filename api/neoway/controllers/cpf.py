@@ -24,7 +24,6 @@ class CPFController:
         }
 
     def create(self, request):
-        ## TODO: Validate request params
         cpf = clean_cpf(request.json.get('cpf'))
 
         if not validate_cpf(cpf):
@@ -35,7 +34,11 @@ class CPFController:
     def delete(self, id: int):
         response = self.repository.delete(id)
 
-        return jsonify(response) if response == [] else jsonify(response), 400
+        if response == []:
+            jsonify(response), 400
+
+        return jsonify(response)
+
 
     def block(self, id: int):
         cpf = self.repository.get(id)
@@ -57,8 +60,6 @@ class CPFController:
         return jsonify(self.repository.get(id) or [])
 
     def validate(self, request):
-        ## TODO: Validate request params
-
         cpf = clean_cpf(request.args.get('cpf'))
 
         blocked = self.repository.blocked(cpf)
