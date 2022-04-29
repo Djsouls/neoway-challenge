@@ -68,4 +68,4 @@ docker-compose up
 Se tudo der certo, a aplicação deve estar disponível através da url `http://localhost:8080/`.
 
 ## Testes
-Os testes são rodados toda vez que a instância irá subir, entretanto, para executar os testes apenas, a partir do diretório raiz, execute: `docker build -t tests --target tests .`
+Os testes são rodados toda vez que a instância irá subir, entretanto, para executar os testes apenas, a partir do diretório `api/`, execute: `docker build -t tests --target tests .`
