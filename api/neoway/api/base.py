@@ -14,11 +14,6 @@ def hello():
     return jsonify({'data': False})
 
 
-@bp.route('/test')
-def aicaramba():
-    return 'opa'
-
-
 @bp.route('/status')
 def uptime():
     return status_controller.uptime()
