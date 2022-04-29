@@ -5,8 +5,9 @@ from validate_docbr import CNPJ
 from neoway.utils import clean_cnpj
 
 from neoway.controllers.decorators import format_response
+
 from neoway.db.repositories import CNPJRepository
-from neoway.services.validator import validate
+from neoway.services.validator import validate_cnpj
 
 class CNPJController:
     def __init__(self):
@@ -27,7 +28,7 @@ class CNPJController:
         # just for now
         cnpj = clean_cnpj(request.json.get('cnpj'))
 
-        if not validate(CNPJ(), cnpj):
+        if not validate_cnpj(cnpj):
             return jsonify({'error': 'invalid cnpj'}), 400
 
         return jsonify(self.repository.create(cnpj))
@@ -57,5 +58,5 @@ class CNPJController:
         blocked = self.repository.blocked(cnpj)
 
         return jsonify({
-            'valid': validate(CNPJ(), cnpj) and not blocked
+            'valid': validate_cnpj(cnpj) and not blocked
         })

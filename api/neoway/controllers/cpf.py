@@ -5,8 +5,9 @@ from validate_docbr import CPF
 from neoway.utils import clean_cpf
 
 from neoway.controllers.decorators import format_response
+
 from neoway.db.repositories import CPFRepository
-from neoway.services.validator import validate
+from neoway.services.validator import validate_cpf
 
 class CPFController:
     def __init__(self):
@@ -24,10 +25,9 @@ class CPFController:
 
     def create(self, request):
         ## TODO: Validate request params
-        # just for now
         cpf = clean_cpf(request.json.get('cpf'))
 
-        if not validate(CPF(), cpf):
+        if not validate_cpf(cpf):
             return jsonify({'error': 'invalid cpf'}), 400
 
         return jsonify(self.repository.create(cpf))
@@ -57,5 +57,5 @@ class CPFController:
         blocked = self.repository.blocked(cpf)
         print(blocked)
         return jsonify({
-            'valid': validate(CPF(), cpf) and not blocked
+            'valid': validate_cpf(cpf) and not blocked
         })
