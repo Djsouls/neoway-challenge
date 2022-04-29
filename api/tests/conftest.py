@@ -18,6 +18,10 @@ def app():
 
         db.drop_all()
 
+@pytest.fixture()
+def client(app):
+    return app.test_client()
+
 def populate_db(db):
     db.session.add(CPFModel(cpf='11421433923'))
     db.session.add(CPFModel(cpf='44826646186'))
