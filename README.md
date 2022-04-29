@@ -17,14 +17,14 @@ Como banco de dados foi escolhido o PostgreSQL, devido a conhecimento e uso pré
 ## Ressalvas sobre a solução
 O desenvolvimento aqui foi feito em cima do o ambiente de desenvolvimento do framework Flask, devido principalmente ao fato de que este é um exercício de conhecimento. Para o caso de executar a aplicação em um ambiente de produção algumas alterações deveriam ser feitas, como por exemplo configurar corretamente o [WSGI](https://pt.wikipedia.org/wiki/Web_Server_Gateway_Interface) entre outros detalhes.
 
-## Melhorias futuras
-
 ### Sobre as validações
 Houve dúvida sobre se a validação deveria ser realizada na parte do frontend, ou backend, não ficou muito claro no enunciado. Assim, implementei em ambas as partes.
 
 A partir da página : `http://localhost:8080/validate` no seu browser, será mostrada uma `View` de validação feita pelo backend, essa página faz uma requisição de validação ao backend e age de acordo com o resultado.
 
 Já na página `http://localhost:8080/`, existe uma validação feita no frontend ao tentar inserir um CPF/CNPJ novo, não permitindo a ação caso o CPF/CNPJ seja inválido
+
+## Melhorias futuras
 
 ### Sobre testes do frontend
 Não foram implementados testes no frontend pela falta de experiência com eles, entretanto é um forte ponto de melhoria futura.
