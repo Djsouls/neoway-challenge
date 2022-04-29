@@ -1,10 +1,11 @@
+from api import base
 from flask import Flask
 
 from extensions import cors, db
 
 from dynaconf import FlaskDynaconf
 
-from api import resources, cpf, cnpj
+from api import cpf, cnpj
 
 def create_app() -> Flask:
     app = Flask('neoway-api')
@@ -20,6 +21,6 @@ def register_extensions(app: Flask):
     db.init_app(app)
 
 def register_blueprints(app: Flask):
-    app.register_blueprint(resources.bp)
+    app.register_blueprint(base.bp)
     app.register_blueprint(cpf.bp)
     app.register_blueprint(cnpj.bp)
