@@ -26,6 +26,9 @@ A partir da página : `http://localhost:8080/validate` no seu browser, será mos
 
 Já na página `http://localhost:8080/`, existe uma validação feita no frontend ao tentar inserir um CPF/CNPJ novo, não permitindo a ação caso o CPF/CNPJ seja inválido
 
+### Sobre testes do frontend
+Não foram implementados testes no frontend pela falta de experiência com eles, entretanto é um forte ponto de melhoria futura.
+
 ### Sobre a rota `/status`
 Para se possuir métricas de maneira robusta, o ideal seria utilizar uma ferramenta de monitoramento, como DataDog ou similiares, entretanto, não foi possível realizar a integração deste tipo de ferramenta a tempo, devido principalmente a falta de experiência prévia.
 
