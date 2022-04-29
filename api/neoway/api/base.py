@@ -11,7 +11,7 @@ status_controller = StatusController()
 
 @bp.route('/')
 def hello():
-    return jsonify({'data': False})
+    return jsonify({'hello': 'world'})
 
 
 @bp.route('/status')
