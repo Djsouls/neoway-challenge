@@ -1,4 +1,4 @@
-FROM python:3.9
+FROM python:3.9 as base
 
 WORKDIR app/
 
@@ -6,8 +6,13 @@ COPY . .
 
 RUN pip install -r requirements.txt
 
-ENV FLASK_ENV development
 
-# ENTRYPOINT ["python"]
+FROM base as tests
+
+RUN ["pytest", "-v"]
+
+FROM base as development
+
+ENV FLASK_ENV development
 
 CMD ["python", "-m", "neoway"]
