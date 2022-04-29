@@ -28,6 +28,9 @@ Em relação ao número de requisições; sem utilizar ferramentas externas não
 
 Resumindo, a rota `/status` retorna apenas o `uptime` do servidor de banco de dados. Uma boa melhoria nesse ponto seria ou a integração de alguma ferramenta de monitoramento, ou implementação dessas métricas de maneira fiel.
 
+### Documentação
+A documentação atual foi feita manualmente, utilizando linguagem de Markdown. Uma boa melhoria seria uso de um padrão conhecido, como por exemplo [OpenAPI](https://www.openapis.org/), que fornece outras vantagens além de apenas a documentação em si, como geração de código automático e validação de dados.
+
 ## Documentação
 A documentação API se encontra dentro do diretório `/api` em formato de markdown, e existem alguns fluxos mostrados de uso da interface web dentro do diretório `/web`
 
@@ -53,3 +56,6 @@ docker-compose up
 ```
 
 Se tudo der certo, a aplicação deve estar disponível através da url `http://localhost:8080/`.
+
+## Testes
+Os testes são rodados toda vez que a instância irá subir, entretanto, para executar os testes apenas, a partir do diretório raiz, execute: `docker build -t tests --target tests .`
