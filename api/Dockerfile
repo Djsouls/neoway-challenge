@@ -10,4 +10,4 @@ ENV FLASK_ENV development
 
 # ENTRYPOINT ["python"]
 
-CMD ["python", "app/main.py"]
+CMD ["python", "-m", "neoway"]
