@@ -11,5 +11,5 @@ class CNPJModel(db.Model):
     cnpj: str = db.Column(db.String, nullable=False)
 
     blocked_at: datetime = db.Column(db.DateTime, default=None)
-    created_at: datetime = db.Column(db.DateTime, nullable=False)
-    updated_at: datetime = db.Column(db.DateTime, nullable=False)
+    created_at: datetime = db.Column(db.DateTime, default=datetime.now(),
+        nullable=False)

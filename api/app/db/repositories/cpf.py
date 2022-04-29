@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from models import CPFModel
 
 from extensions import db
@@ -21,3 +23,34 @@ class CPFRepository:
         db.session.commit()
 
         return cpf
+
+    def delete(self, id: int):
+        cpf = self.model.query.get(id)
+
+        db.session.delete(cpf)
+        db.session.commit()
+
+        return cpf
+
+    def block(self, id: int):
+        cpf = self.model.query.get(id)
+
+        cpf.blocked_at = datetime.now()
+
+        db.session.commit()
+
+        return cpf
+
+    def unblock(self, id: int):
+        cpf = self.model.query.get(id)
+
+        cpf.blocked_at = None
+
+        db.session.commit()
+
+        return cpf
+
+    def blocked(self, cpf: str):
+        cpf = self.model.query.filter_by(cpf=cpf).first()
+
+        return False if cpf == None else cpf.blocked_at != None

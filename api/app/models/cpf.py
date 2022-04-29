@@ -13,5 +13,3 @@ class CPFModel(db.Model):
     blocked_at: datetime = db.Column(db.DateTime, default=None)
     created_at: datetime = db.Column(db.DateTime, default=datetime.now(),
         nullable=False)
-    updated_at: datetime = db.Column(db.DateTime, default=datetime.now(),
-        nullable=False)

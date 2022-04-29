@@ -1,17 +1,19 @@
+import json
 from flask import jsonify
 
-from validate_docbr import CPF
+from validate_docbr import CNPJ
 
-from utils import clean_cpf
+from utils import clean_cnpj
 
 from controllers.decorators import format_response
 
 from services.validator import validate
-from db.repositories import CPFRepository
+from db.repositories import CNPJRepository
 
-class CPFController:
+
+class CNPJController:
     def __init__(self):
-        self.repository = CPFRepository()
+        self.repository = CNPJRepository()
 
     @format_response
     def all(self):
@@ -26,21 +28,21 @@ class CPFController:
     def create(self, request):
         ## TODO: Validate request params
         # just for now
-        cpf = clean_cpf(request.json.get('cpf'))
+        cnpj = clean_cnpj(request.json.get('cnpj'))
 
-        if not validate(CPF(), cpf):
-            return jsonify({'error': 'invalid cpf'}), 400
+        if not validate(CNPJ(), cnpj):
+            return jsonify({'error': 'invalid cnpj'}), 400
 
-        return jsonify(self.repository.create(cpf))
+        return jsonify(self.repository.create(cnpj))
 
     def delete(self, id: int):
         return jsonify(self.repository.delete(id))
 
     def block(self, id: int):
-        cpf = self.repository.get(id)
+        cnpj = self.repository.get(id)
 
-        if cpf.blocked_at != None:
-            return jsonify(cpf)
+        if cnpj.blocked_at != None:
+            return jsonify(cnpj)
 
         return jsonify(self.repository.block(id))
 
@@ -53,10 +55,10 @@ class CPFController:
     def validate(self, request):
         ## TODO: Validate request params
 
-        cpf = clean_cpf(request.args.get('cpf'))
+        cnpj = clean_cnpj(request.args.get('cnpj'))
 
-        blocked = self.repository.blocked(cpf)
-        print(blocked)
+        blocked = self.repository.blocked(cnpj)
+
         return jsonify({
-            'valid': validate(CPF(), cpf) and not blocked
+            'valid': validate(CNPJ(), cnpj) and not blocked
         })
