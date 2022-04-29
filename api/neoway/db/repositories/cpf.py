@@ -27,6 +27,9 @@ class CPFRepository:
     def delete(self, id: int):
         cpf = self.model.query.get(id)
 
+        if not cpf:
+            return []
+
         db.session.delete(cpf)
         db.session.commit()
 
@@ -43,6 +46,9 @@ class CPFRepository:
 
     def unblock(self, id: int):
         cpf = self.model.query.get(id)
+
+        if cpf is None:
+            return []
 
         cpf.blocked_at = None
 

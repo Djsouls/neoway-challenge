@@ -27,6 +27,9 @@ class CNPJRepository:
     def delete(self, id: int):
         cnpj = self.model.query.get(id)
 
+        if not cnpj:
+            return []
+
         db.session.delete(cnpj)
         db.session.commit()
 
@@ -43,6 +46,9 @@ class CNPJRepository:
 
     def unblock(self, id: int):
         cnpj = self.model.query.get(id)
+
+        if cnpj is None:
+            return []
 
         cnpj.blocked_at = None
 

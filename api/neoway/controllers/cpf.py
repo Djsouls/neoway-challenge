@@ -33,10 +33,15 @@ class CPFController:
         return jsonify(self.repository.create(cpf))
 
     def delete(self, id: int):
-        return jsonify(self.repository.delete(id))
+        response = self.repository.delete(id)
+
+        return jsonify(response) if response == [] else jsonify(response), 400
 
     def block(self, id: int):
         cpf = self.repository.get(id)
+
+        if cpf is None:
+            return jsonify([]), 400
 
         if cpf.blocked_at != None:
             return jsonify(cpf)
@@ -44,7 +49,9 @@ class CPFController:
         return jsonify(self.repository.block(id))
 
     def unblock(self, id: int):
-        return jsonify(self.repository.unblock(id))
+        response = self.repository.unblock(id)
+
+        return jsonify(response) if response == [] else jsonify(response), 400
 
     def get(self, id: int):
         return jsonify(self.repository.get(id) or [])
